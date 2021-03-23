@@ -1,24 +1,23 @@
-import React, { FC } from 'react'
+import React, { FC, FormEvent } from 'react'
 
 interface ButtonProps {
   text: string
-  buttonType?: any
-  onClick: () => void
+  onClick: (e: FormEvent<HTMLButtonElement>) => void
 }
 
-const Button: FC<ButtonProps> = ({ text, buttonType, onClick }) => {
+const Button: FC<ButtonProps> = ({ text, onClick }) => {
   return (
     <button
-      type={buttonType}
       onClick={onClick}
       style={{
-        padding: '12px',
+        padding: '8px',
         border: 'none',
         borderRadius: '6px',
         backgroundColor: 'cornflowerblue',
         fontWeight: 'bold',
         color: 'white',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        fontSize: '10px'
       }}>
       {' '}
       {text}

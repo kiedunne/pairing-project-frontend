@@ -1,42 +1,25 @@
-import React, { useState } from 'react'
 import { TodoList } from './components/TodoList/TodoList'
-import { AddTodoForm } from './components/AddTodoForm/AddTodoForm'
+import { AddTodoForm } from './components/AddTodoForm'
 import { Button } from './components/Button/Button'
+import axios from 'axios'
+
 function App() {
-  const initTodos: Todo[] = [
-    { text: 'learn react', complete: true },
-    { text: 'learn typescript', complete: false },
-    { text: 'learn java', complete: false },
-  ]
-
-  const [todos, setTodos] = useState<Array<Todo>>(initTodos)
-
-  const toggleTodo = (selectedTodo: Todo) => {
-    const newTodos = todos.map((todo) => {
-      if (todo === selectedTodo) {
-        return {
-          ...todo,
-          complete: !todo.complete,
-        }
-      }
-      return todo
-    })
-    setTodos(newTodos)
-  }
-
-  const addTodos: AddTodo = newTodo => {
-    newTodo.trim() !== "" &&
-      setTodos([...todos, { text: newTodo, complete: false }]);
-  };
-
   const fetchHealthCheck = () => {
-    console.log('fetching..')
+    axios.get('http://localhost:8080/health-check', {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    }).then((response) => {
+      console.log(response)
+    }).catch((error) => {
+      console.log(error)
+    })
   }
   return (
     <div className="App">
       <Button onClick={() => fetchHealthCheck()} text="Click me to start the health check!" />
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
-      <AddTodoForm addTodo={addTodos} />
+      <TodoList />
+      <AddTodoForm />
     </div>
   )
 }

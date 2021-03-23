@@ -1,21 +1,30 @@
-import React from 'react'
+import { FC } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getTodoById } from '../../redux/todos/selectors'
+import { RootState, TOGGLE_TODO } from '../../redux/todos/types'
 
 interface Props {
-  todo: Todo
-  toggleTodo: ToggleTodo
+  id: number
 }
 
-const TodoItem: React.FC<Props> = ({ todo, toggleTodo }) => {
+const TodoItem: FC<Props> = ({ id }) => {
+  const dispatch = useDispatch()
+  const todo = useSelector((state: RootState) => getTodoById(state, id))
+
+  const handleToggle = () => {
+    dispatch({ type: TOGGLE_TODO, payload: todo?.id })
+  }
+
   return (
     <li>
       <label
-        style={{ textDecoration: todo.complete ? 'line-through' : undefined }}>
+        style={{ textDecoration: todo?.completed ? 'line-through' : undefined }}>
         <input
-          onChange={() => toggleTodo(todo)}
+          onChange={handleToggle}
           type="checkbox"
-          checked={todo.complete}
+          checked={todo?.completed}
         />
-        {todo.text}
+        {todo?.text}
       </label>
     </li>
   )

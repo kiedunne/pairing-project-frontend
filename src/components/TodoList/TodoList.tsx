@@ -1,16 +1,14 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
+import { useSelector, shallowEqual } from 'react-redux'
 import { TodoItem } from '../TodoItem/TodoItem'
+import { getTodoIds } from '../../redux/todos/selectors'
 
-interface Props {
-  todos: Todo[]
-  toggleTodo: ToggleTodo
-}
-
-const TodoList: FC<Props> = ({ todos, toggleTodo }) => {
+const TodoList: FC = () => {
+  const todoIds = useSelector(getTodoIds, shallowEqual)
   return (
     <ul>
-      {todos.map((todo) => (
-        <TodoItem todo={todo} toggleTodo={toggleTodo} key={todo.text} />
+      {todoIds.map((todoId: any) => (
+        <TodoItem key={todoId} id={todoId} />
       ))}
     </ul>
   )
