@@ -1,24 +1,19 @@
-import React, { FC, FormEvent } from 'react'
-
+import { FC, FormEvent } from 'react'
+import './Button.css'
 interface ButtonProps {
+  type?: 'submit' | 'reset' | 'button';
   text: string
+  primary?: boolean
   onClick: (e: FormEvent<HTMLButtonElement>) => void
 }
 
-const Button: FC<ButtonProps> = ({ text, onClick }) => {
+const Button: FC<ButtonProps> = ({ type, text, onClick, primary }) => {
   return (
     <button
       onClick={onClick}
-      style={{
-        padding: '8px',
-        border: 'none',
-        borderRadius: '6px',
-        backgroundColor: 'cornflowerblue',
-        fontWeight: 'bold',
-        color: 'white',
-        cursor: 'pointer',
-        fontSize: '10px'
-      }}>
+      className="button"
+      type={type || 'button'}
+    >
       {' '}
       {text}
     </button>

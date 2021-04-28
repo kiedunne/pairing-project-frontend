@@ -1,9 +1,9 @@
-import { ADD_TODO, TOGGLE_TODO } from './types'
+import { ADD_TODO, TOGGLE_TODO, FETCH_TODOS, Todo } from './types'
 
-export const addTodo = (text: string) => ({
+export const addTodo = (todo: Todo) => ({
   type: ADD_TODO,
   payload: {
-    text,
+    todo,
   },
 })
 
@@ -11,5 +11,12 @@ export const toggleTodo = (id: string) => ({
   type: TOGGLE_TODO,
   payload: {
     id,
+  }
+})
+
+export const fetchTodos = (todos: any) => ({
+  type: FETCH_TODOS,
+  payload: {
+    todos,
   }
 })

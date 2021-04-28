@@ -1,0 +1,11 @@
+.enter-todo {
+  padding-left: 10px;
+  margin-right: 16px;
+  border-radius: 6px;
+  border: none;
+  min-width: 250px;
+}
+
+.enter-todo:focus {
+  border: none;
+}

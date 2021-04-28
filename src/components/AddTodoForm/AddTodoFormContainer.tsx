@@ -7,9 +7,7 @@ export interface AddTodoFormDispatchProps {
   onAddTodo: (text: string) => void
 }
 
-const mapDispatchToProps = (
-  dispatch: DispatchFunction
-): AddTodoFormDispatchProps => {
+const mapDispatchToProps = (dispatch: DispatchFunction): AddTodoFormDispatchProps => {
   return {
     onAddTodo: (text: string): void => {
       dispatch(doAddTodo(text))

@@ -1,0 +1,14 @@
+.todo-list-item {
+  background: white;
+  color: #6D5980;
+  font-weight: bold;
+  box-shadow: 4px 4px 4px 4px rgb(0 0 0 / 12%);
+  padding: 12px;
+  border-radius: 10px;
+  margin: 16px;
+  min-width: 350px;
+}
+
+.todo-list-item input {
+  margin-right: 20px;
+}

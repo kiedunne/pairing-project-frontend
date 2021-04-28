@@ -1,8 +1,13 @@
 import { RootState, Todo } from './types'
 
-const getTodoIds = (state: RootState) => state.todos.map((todo) => todo.id)
+const getAllTodos = (state: RootState) => state.todos
+
+const getTodoIds = (state: RootState) => {
+  console.log(state.todos.length)
+  state.todos.map((todo) => todo.id)
+}
 
 const getTodoById = (state: RootState, todoId: number) =>
   state.todos.find((todo: Todo) => todo.id === todoId)
 
-export { getTodoIds, getTodoById }
+export { getAllTodos, getTodoIds, getTodoById }

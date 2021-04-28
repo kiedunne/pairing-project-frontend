@@ -1,0 +1,12 @@
+body {
+  font-family: helvetica;
+  color: white;
+  background-color: #902aef;
+}
+
+.App {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

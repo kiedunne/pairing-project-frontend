@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.content {
+  background-color: #39397d;
+  padding: 50px 40px;
+  border-radius: 10px;
+  min-height: 400px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}

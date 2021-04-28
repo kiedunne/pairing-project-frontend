@@ -1,14 +1,16 @@
 import { FC } from 'react'
 import { useSelector, shallowEqual } from 'react-redux'
-import { TodoItem } from '../TodoItem/TodoItem'
-import { getTodoIds } from '../../redux/todos/selectors'
+import { TodoItem } from '../TodoItem'
+import { getAllTodos } from '../../redux/todos/selectors'
+import './TodoList.css'
 
 const TodoList: FC = () => {
-  const todoIds = useSelector(getTodoIds, shallowEqual)
+  const todos = useSelector(getAllTodos, shallowEqual)
+
   return (
-    <ul>
-      {todoIds.map((todoId: any) => (
-        <TodoItem key={todoId} id={todoId} />
+    <ul className="todo-list">
+      {todos.map((todo: any) => (
+        <TodoItem key={todo.id} todo={todo} />
       ))}
     </ul>
   )

@@ -1,29 +1,13 @@
-import { ADD_TODO, TOGGLE_TODO } from './types'
+import { ADD_TODO, TOGGLE_TODO, FETCH_TODOS } from './types'
 
-const initialState: any[] = [
-  { id: 1, text: 'Config redux store', complete: true },
-  { id: 2, text: 'Split into modules', complete: false },
-  { id: 3, text: 'Set up endpoints', complete: false },
-]
-
-const nextTodoId = (todos: any): number => {
-  const maxId = todos.reduce(
-    (maxId: any, todo: any) => Math.max(todo.id, maxId),
-    -1
-  )
-  return maxId + 1
-}
+const initialState: any[] = []
 
 const todosReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case ADD_TODO: {
       return [
         ...state,
-        {
-          id: nextTodoId(state),
-          text: action.payload,
-          completed: false,
-        },
+        action.payload.todo
       ]
     }
     case TOGGLE_TODO: {
@@ -36,6 +20,9 @@ const todosReducer = (state = initialState, action: any) => {
           completed: !todo.completed
         }
       })
+    }
+    case FETCH_TODOS: {
+      return action.payload.todos
     }
     default:
       return state
